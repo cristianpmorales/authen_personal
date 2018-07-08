@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+    <title>Admin Site</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="page-header text-center">
+        <img class ="logoProfile" src="img/nube.jpg" alt="Nube Logo"></span>
+        <h1>Create a list</h1>
+    </div>
+    <div class="containerNav">
+      <nav class="primary_nav_wrap">
+      <ul>
+        <li class="current-menu-item"><a href="#">Home</a></li>
+        <li><a href="#">Page Link</a>
+          <ul>
+            <li><a href="#">Page Option</a></li>
+            <li><a href="#">Page Option</a></li>
+            <li><a href="#">Page Option</a></li>
+          </ul>
+              <ul>
+                <li><a href="#">Page Link</a></li>
+                  <ul>
+                    <li><a href="#">Page Option</a></li>
+                    <li><a href="#">Page Option</a></li>
+                    <li><a href="#">Page Option</a></li>
+                  </ul>
+              </ul>
+              </li>
+              <li> <a href="#"> Page Link</a>
+                <ul>
+                  <li> <a href="#"> Page Option</a></li>
+                  <li> <a href="#"> Page Option</a></li>
+                  <li> <a href="#"> Page Option</a></li>
+                </ul>
+              </li>
+              <li> <a href="#"> Page Link</a>
+                <ul>
+                  <li> <a href="#">Page Option</a></li>
+                  <li> <a href="#">Page Option</a></li>
+                  <li> <a href="#">Page Option</a></li>
+                </ul>
+              </li>
+              <li> <a href="#"> Page Link</a>
+                <ul>
+                  <li> <a href="#">Page Option</a></li>
+                  <li> <a href="#">Page Option</a></li>
+                  <li> <a href="#">Page Option</a></li>
+                </ul>
+              </li>
+              <li class="createList"><a href="#">Create a list</a></li>
+              <li><a href="/logout" class="createList">Logout</a></li>
+
+    </div> <!--<div class="containerNav">-->
+
+
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+                <h3><span class="fa fa-user"></span> NUBE Member</h3>
+
+                <% if (user.local.email) { %>
+                    <p>
+                        <strong>id</strong>: <%= user._id %><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                <% } %>
+
+        </div>
+        <div class="messageContainer">
+          <h2>Submit a voter</h2>
+        <% if (user.local.email) { %>
+          <form action="/voterList" method="POST">
+            <label for="fname">First Name </label> <input type="text" placeholder="First Name" name="fname">
+            <label for="lname">Last Name </label> <input type="text" placeholder="Last Name" name="lname" >
+            <label for="adress">Address </label> <input type="text" placeholder="Adress" name="address">
+            <label for="answer">Did they vote? </label> <input type="text" placeholder="Y/N" name="answer">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      <% } %>
+    </div>
+
+      <div class="voterInformation">
+        <!-- <div class="col-sm-6"> -->
+          <h3>Voters</h3>
+          <% for(var i=0; i<voters.length; i++) {%>
+              <span class = "label">First Name</span>
+              <span><%= voters[i].fname %></span>
+              <span class = "label">Last name</span>
+              <span><%= voters[i].lname %></span>
+              <span class = "label">Address</span>
+              <span><%= voters[i].address %></span>
+              <span class = "label">Answer</span>
+              <span><%= voters[i].answer %></span>
+          <% } %>
+          </ul>
+      </div>
+
+
+
+
+
+<script src="main.js"></script>
+
+</body>
+</html>
